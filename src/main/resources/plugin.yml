@@ -1,0 +1,9 @@
+name: Permissions
+version: '${project.version}'
+main: br.com.rabbithole.permissions.Permissions
+api-version: 1.19
+authors: [ FelipeSz_19 ]
+description: Permissions Provider for Rabbit Hole RP
+commands:
+  permissions:
+    description: Permissions Handler
