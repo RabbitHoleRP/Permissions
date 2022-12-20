@@ -20,7 +20,7 @@ public class PermissionsAPI {
         }
     }
 
-    public boolean hasPermission(String nick, Groups group) {
-        return CacheMethods.hasPermission(nick, group);
+    public boolean hasPermission(String nick, String group) {
+        return CacheMethods.hasPermission(nick, Groups.valueOf(group.toUpperCase()));
     }
 }
