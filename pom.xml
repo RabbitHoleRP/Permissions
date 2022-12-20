@@ -78,12 +78,6 @@
         </dependency>
         <dependency>
             <groupId>dev.gump</groupId>
-            <artifactId>mars</artifactId>
-            <version>1.2.3-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>dev.gump</groupId>
             <artifactId>worm</artifactId>
             <version>3.0.8-SNAPSHOT</version>
             <scope>compile</scope>
