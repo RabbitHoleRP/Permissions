@@ -8,7 +8,7 @@ import org.bukkit.Bukkit;
 import java.util.Objects;
 
 public class PermissionsAPI {
-    public static Groups getPermission(String nick) {
+    public Groups getPermission(String nick) {
         if (Objects.requireNonNull(Bukkit.getPlayerExact(nick)).isOnline()) {
             return CacheMethods.getPermission(nick);
         } else {
@@ -18,5 +18,9 @@ public class PermissionsAPI {
                 return Groups.NOT_FOUND;
             }
         }
+    }
+
+    public boolean hasPermission(String nick, Groups group) {
+        return CacheMethods.hasPermission(nick, group);
     }
 }
