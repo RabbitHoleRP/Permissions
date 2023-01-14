@@ -16,6 +16,14 @@
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+         
+    <distributionManagement>
+        <repository>
+            <id>rabbithole-repo-snapshots</id>
+            <name>Rabbithole Repository</name>
+            <url>https://repo.rabbithole.com.br/snapshots</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
