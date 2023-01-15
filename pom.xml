@@ -18,10 +18,15 @@
     </properties>
          
     <distributionManagement>
-        <repository>
-            <id>rabbithole-repo-snapshots</id>
-            <name>Rabbithole Repository</name>
+        <snapshotRepository>
+            <id>permissions</id>
+            <name>Permissions</name>
             <url>https://repo.rabbithole.com.br/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>permissions</id>
+            <name>Permissions</name>
+            <url>https://repo.rabbithole.com.br/releases</url>
         </repository>
     </distributionManagement>
 
