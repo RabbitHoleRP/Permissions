@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Permissions extends JavaPlugin {
-    private static PermissionsAPI API;
+    private static PermissionsAPI API = new PermissionsAPI();
 
     @Override
     public void onEnable() {
@@ -35,7 +35,6 @@ public final class Permissions extends JavaPlugin {
         RedisConfiguration.init(this);
         commands();
         events();
-        API = new PermissionsAPI();
     }
 
     void commands() {
