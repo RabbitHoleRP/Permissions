@@ -18,6 +18,8 @@ public final class Permissions extends JavaPlugin {
         // Plugin startup logic
         Bukkit.getConsoleSender().sendMessage(StringUtils.format("<green>Permissions iniciado com Sucesso!"));
         registers();
+        Bukkit.getConsoleSender().sendMessage(StringUtils.format(API.toString()));
+        Bukkit.getConsoleSender().sendMessage(API.getPermission("FelipeSz_19").toString());
     }
 
     @Override
