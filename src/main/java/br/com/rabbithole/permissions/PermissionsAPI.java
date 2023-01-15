@@ -6,8 +6,6 @@ import br.com.rabbithole.permissions.enums.Groups;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.Objects;
-
 public class PermissionsAPI {
     public Groups getPermission(String nick) {
         Player player = Bukkit.getPlayerExact(nick);
