@@ -20,9 +20,9 @@ public class PermissionsAPI {
         }
     }
 
-    public boolean hasPermission(String nick, String group) {
+    public boolean hasPermission(String nick, Groups group) {
         Player player = Bukkit.getPlayerExact(nick);
         if (player == null) return false;
-        return CacheMethods.hasPermission(player.getName(), Groups.valueOf(group.toUpperCase()));
+        return CacheMethods.hasPermission(player.getName(), group);
     }
 }
