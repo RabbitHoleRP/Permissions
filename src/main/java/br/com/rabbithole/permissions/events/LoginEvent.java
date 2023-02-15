@@ -4,8 +4,9 @@ import br.com.rabbithole.permissions.Permissions;
 import br.com.rabbithole.permissions.data.cache.methods.CacheMethods;
 import br.com.rabbithole.permissions.data.sql.methods.PermissionsMethods;
 import br.com.rabbithole.permissions.enums.Groups;
+import br.com.rabbithole.permissions.enums.Warns;
 import br.com.rabbithole.permissions.utils.StringUtils;
-import org.bukkit.Bukkit;
+import br.com.rabbithole.permissions.utils.WarnUtils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
@@ -22,14 +23,14 @@ public class LoginEvent implements Listener {
     public void onLogin(AsyncPlayerPreLoginEvent event) {
         if (!PermissionsMethods.hasAccount(event.getName())) {
             if (!PermissionsMethods.createAccount(event.getName())) {
-                Bukkit.getConsoleSender().sendMessage(StringUtils.format("<red>[Permissions] Erro ao registrar Jogador!"));
+                WarnUtils.sendWarn(Warns.REGISTER_PLAYER_ERROR);
                 event.kickMessage(StringUtils.format("<red><bold>ENTRE NOVAMENTE POR FAVOR!"));
                 event.setLoginResult(AsyncPlayerPreLoginEvent.Result.KICK_OTHER);
             }
-            CacheMethods.addPlayer(event.getName(), Groups.MEMBER);
+            if(!CacheMethods.addPlayer(event.getName(), Groups.MEMBER)) WarnUtils.sendWarn(Warns.INSERT_CACHE_ERROR);
         } else {
             if (!CacheMethods.hasPlayer(event.getName())) {
-                CacheMethods.addPlayer(event.getName(), PermissionsMethods.getPermission(event.getName()));
+                if(!CacheMethods.addPlayer(event.getName(), Groups.MEMBER)) WarnUtils.sendWarn(Warns.INSERT_CACHE_ERROR);
             }
         }
     }
