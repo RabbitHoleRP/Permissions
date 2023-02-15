@@ -4,6 +4,8 @@ import br.com.rabbithole.permissions.data.cache.RedisConfiguration;
 import org.bukkit.Bukkit;
 import redis.clients.jedis.Jedis;
 
+import java.util.Optional;
+
 public class RedisUtils {
     public static boolean hashSetQuery(String key, String field, String value) {
         try (Jedis jedis = RedisConfiguration.getJedis().getResource()) {
@@ -37,13 +39,13 @@ public class RedisUtils {
         }
     }
 
-    public static String hashGetQuery(String key, String field) {
+    public static Optional<String> hashGetQuery(String key, String field) {
         try (Jedis jedis = RedisConfiguration.getJedis().getResource()) {
-            return jedis.hget(key, field);
+            return Optional.of(jedis.hget(key, field));
         } catch (Exception exception) {
             Bukkit.getConsoleSender().sendMessage(StringUtils.format("<red> Redis Exception!"));
             exception.printStackTrace();
-            return "?";
+            return Optional.empty();
         }
     }
 }

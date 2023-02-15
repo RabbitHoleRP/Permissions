@@ -2,6 +2,8 @@ package br.com.rabbithole.permissions.data.cache.methods;
 
 import br.com.rabbithole.permissions.enums.Groups;
 
+import java.util.Optional;
+
 import static br.com.rabbithole.permissions.utils.RedisUtils.*;
 
 public class CacheMethods {
@@ -20,7 +22,8 @@ public class CacheMethods {
     }
 
     public static Groups getPermission(String nick) {
-        return Groups.valueOf(hashGetQuery(KEY, nick));
+        Optional<String> result = hashGetQuery(KEY, nick);
+        return result.map(Groups::valueOf).orElse(Groups.NOT_FOUND);
     }
 
     public static boolean hasPermission(String nick, Groups group) {
