@@ -1,12 +1,12 @@
 package br.com.rabbithole.permissions;
 
+import br.com.rabbithole.WarnUtils;
+import br.com.rabbithole.core.WarnExecutor;
 import br.com.rabbithole.permissions.commands.PermissionCommand;
 import br.com.rabbithole.permissions.data.cache.RedisConfiguration;
 import br.com.rabbithole.permissions.data.sql.WormConfiguration;
 import br.com.rabbithole.permissions.events.LoginEvent;
 import br.com.rabbithole.permissions.events.QuitEvent;
-import br.com.rabbithole.permissions.utils.StringUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -16,16 +16,14 @@ public final class Permissions extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        Bukkit.getConsoleSender().sendMessage(StringUtils.format("<green>Permissions iniciado com Sucesso!"));
+        WarnUtils.getWarn().sendWarn("<red>iniciado com Sucesso!");
         registers();
-        Bukkit.getConsoleSender().sendMessage(StringUtils.format(API.toString()));
-        Bukkit.getConsoleSender().sendMessage(API.getPermission("FelipeSz_19").toString());
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Bukkit.getConsoleSender().sendMessage(StringUtils.format("<red>Permissions desativado com Sucesso!"));
+        WarnUtils.getWarn().sendWarn("<red>desativado com Sucesso!");
         HandlerList.unregisterAll(this);
     }
 
@@ -35,6 +33,7 @@ public final class Permissions extends JavaPlugin {
         RedisConfiguration.init(this);
         commands();
         events();
+        WarnUtils.warnInitializer("Permissions");
     }
 
     void commands() {
@@ -48,6 +47,10 @@ public final class Permissions extends JavaPlugin {
 
     public static PermissionsAPI getAPI() {
         return API;
+    }
+
+    public static WarnExecutor getWarn() {
+        return WarnUtils.getWarn();
     }
 
     public static Permissions getInstance() {

@@ -6,7 +6,7 @@
 
     <groupId>br.com.rabbithole</groupId>
     <artifactId>Permissions</artifactId>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>1.1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Permissions</name>
@@ -80,6 +80,11 @@
             <name>gump.dev</name>
             <url>https://repo.gump.dev/snapshots</url>
         </repository>
+        <repository>
+            <id>rabbithole-repo-snapshots</id>
+            <name>Rabbit Hole</name>
+            <url>https://repo.rabbithole.com.br/snapshots</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -99,6 +104,11 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>4.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>br.com.rabbithole</groupId>
+            <artifactId>WarnLib</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
