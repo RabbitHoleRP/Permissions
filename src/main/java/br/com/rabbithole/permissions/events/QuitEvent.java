@@ -21,7 +21,7 @@ public class QuitEvent implements Listener {
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         if(!PermissionsMethods.updateAccount(player.getName(), CacheMethods.getPermission(player.getName()))) {
-            Permissions.getWarn().sendWarn(Warn.UPDATE_CACHE_ERROR);
+            Permissions.getWarn().sendWarn(Warn.UPDATE_DATABASE_ERROR);
         }
         if(!CacheMethods.removePlayer(player.getName())) {
             Permissions.getWarn().sendWarn(Warn.DELETE_CACHE_ERROR);

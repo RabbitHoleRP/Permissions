@@ -11,19 +11,20 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Permissions extends JavaPlugin {
-    private static PermissionsAPI API = new PermissionsAPI();
+    private static final PermissionsAPI API = new PermissionsAPI();
+    private static final WarnUtils warn = new WarnUtils("Permissions");
 
     @Override
     public void onEnable() {
         // Plugin startup logic
-        WarnUtils.getWarn().sendWarn("<red>iniciado com Sucesso!");
+        getWarn().sendWarn("<green>[Permissions] iniciado com Sucesso!");
         registers();
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        WarnUtils.getWarn().sendWarn("<red>desativado com Sucesso!");
+        getWarn().sendWarn("<red>[Permissions] desativado com Sucesso!");
         HandlerList.unregisterAll(this);
     }
 
@@ -33,7 +34,6 @@ public final class Permissions extends JavaPlugin {
         RedisConfiguration.init(this);
         commands();
         events();
-        WarnUtils.warnInitializer("Permissions");
     }
 
     void commands() {
@@ -50,7 +50,7 @@ public final class Permissions extends JavaPlugin {
     }
 
     public static WarnExecutor getWarn() {
-        return WarnUtils.getWarn();
+        return warn.getWarn();
     }
 
     public static Permissions getInstance() {
