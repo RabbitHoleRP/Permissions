@@ -27,10 +27,10 @@ public class PermissionsMethods {
         }
     }
 
-    public static boolean updateAccount(String nick, Groups group) {
+    public static boolean updateAccount(String nick, String group) {
         try (PermissionsTable account = new PermissionsTable(nick)) {
             if (account.find()) {
-                account.setPlayerGroup(group.name());
+                account.setPlayerGroup(group);
                 return account.update();
             } else {
                 return false;

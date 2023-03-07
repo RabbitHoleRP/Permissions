@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 
+//TODO: REFATORAR ESSE EVENTO INTERIOR
 public class LoginEvent implements Listener {
     final Permissions plugin;
 
